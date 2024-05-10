@@ -1,3 +1,7 @@
 .leaflet-container {
   height: 300px;
 }
+
+.leaflet-popup-content {
+  text-align: center;
+}
