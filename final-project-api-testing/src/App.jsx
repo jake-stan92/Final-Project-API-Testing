@@ -125,7 +125,7 @@ function App() {
   }
 
   async function getRouteById() {
-    const id = "6";
+    const id = count;
     console.log(`Getting route ${id}...`);
     const response = await fetch(
       `https://final-project-backend-lp20.onrender.com/route/${id}`
@@ -153,7 +153,7 @@ function App() {
   }
 
   async function deleteRoute() {
-    const id = "11";
+    const id = count;
     console.log(`Deleting Route ${id}...`);
     const response = await fetch(
       `https://final-project-backend-lp20.onrender.com/delete/${id}`,
@@ -163,6 +163,12 @@ function App() {
     );
     const data = await response.json();
     console.log(data);
+  }
+
+  const [count, setCount] = useState(0);
+
+  function handleChange(e) {
+    setCount(e.target.value);
   }
 
   return (
@@ -224,10 +230,11 @@ function App() {
           )}
         </tbody>
       </table> */}
+      <input onChange={handleChange}></input>
       <button onClick={getAllRoutes}>Get all routes</button>
-      <button onClick={getRouteById}>Get Route ID 6</button>
+      <button onClick={getRouteById}>Get Route ID</button>
       <button onClick={saveNewRoute}>Save new route</button>
-      <button onClick={deleteRoute}>Delete Route</button>
+      <button onClick={deleteRoute}>Delete Route by ID</button>
     </>
   );
 }
